@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://localhost:8100/?ionicplatform=android#/login -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    
+    <script>
+      // Injected Ionic Go To URL Live Reload Plugin
+      window.LiveReloadPlugin_IonicGoToUrl = (function() {
+        var GOTO_KEY = "__ionic_goto_url__";
+        var HISTORY_GO_KEY = "__ionic_history_go__";
+        var GoToUrlPlugin = function(window, host) {
+          this.window = window;
+          this.host = host;
+        }
+        GoToUrlPlugin.identifier = "__ionic_goto_url__";
+        GoToUrlPlugin.version = "1.0";
+        GoToUrlPlugin.prototype.reload = function(path) {
+          try {
+            if(path) {
+              if(path.indexOf(GOTO_KEY) === 0) {
+                this.window.document.location = path.replace(GOTO_KEY, "");
+                return true;
+              }
+              if(path.indexOf(HISTORY_GO_KEY) === 0) {
+                this.window.document.history.go( parseInt(path.replace(HISTORY_GO_KEY, ""), 10));
+                return true;
+              }
+            }
+          } catch(e) {
+            console.log(e);
+          }
+          return false;
+        };
+        return GoToUrlPlugin;
+      })();
+    </script>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Login</title>
+
+    <link href="./ionic.css" rel="stylesheet">
+    <link href="./animate.css" rel="stylesheet">
+    <link href="./style(1).css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="./ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="./cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="./app.js"></script>
+    <script src="./controllers.js"></script>
+    <script src="./services.js"></script>
+    <script src="./mizar-alcor-tabs.js"></script>
+    <script src="./directives.js"></script>
+    <script src="./angular-monoelastic.js"></script>
+    <script src="./collide.js"></script>
+    <script src="./ionic.tdcards2.js"></script>
+  </head>
+  <body ng-app="starter" class="grade-a platform-browser platform-android platform-ready">
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <ion-nav-bar class="bar-stable nav-bar-container" nav-bar-transition="android" nav-bar-direction="none" nav-swipe="">
+      <ion-nav-back-button class="hide"></ion-nav-back-button>
+    <div class="nav-bar-block" nav-bar="cached"><ion-header-bar class="bar-stable bar bar-header" align-title="left"><button ng-click="$ionicGoBack()" class="button back-button hide buttons  button-clear header-item"><i class="icon ion-arrow-left-c color-coral"></i> 
+      <span class="back-text"></span></button><div class="title title-left header-item"></div></ion-header-bar></div><div class="nav-bar-block" nav-bar="active"><ion-header-bar class="bar-stable bar bar-header" align-title="left"><button ng-click="$ionicGoBack()" class="button back-button hide buttons  button-clear header-item"><i class="icon ion-arrow-left-c color-coral"></i> 
+      <span class="back-text"></span></button><div class="title title-left header-item">Login</div></ion-header-bar></div></ion-nav-bar>
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view class="view-container" nav-view-transition="android" nav-view-direction="none" nav-swipe="">
+<ion-view view-title="Login" class="pane" nav-view="active" style="transform: translate3d(0%, 0px, 0px); opacity: 1;">
+	<ion-content class="landing scroll-content ionic-scroll overflow-scroll  has-header"><div class="scroll">
+		<div class="facebook">
+			<button class="button button-positive facebook-button">
+				<i class="ion-social-facebook big"></i> Login with Facebook
+			</button>
+		</div>
+	</div></ion-content>
+</ion-view></ion-nav-view>
+  
+<script>
+ionic && ionic.Platform && ionic.Platform.setPlatform("android");
+</script>
+
+<script>//<![CDATA[
+document.write('<script src="//' + (location.hostname || 'localhost') + ':35729/livereload.js?snipver=1"><\/script>')
+//]]></script><script src="./livereload.js"></script>
+
+
+</body></html>

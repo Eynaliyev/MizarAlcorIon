@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic', 'firebase'
+angular.module('starter', ['ionic',
                           , 'starter.controllers'
                           , 'starter.services'
                           , 'starter.directives'
@@ -28,9 +28,6 @@ var app = angular.module('starter', ['ionic', 'firebase'
     }
   });
 })
-
-.constant('FURL', 'https://mizaralcor.firebaseio.com/')
-
 .config(function ($provide, $ionicConfigProvider, $compileProvider) {
   $ionicConfigProvider.tabs.position('bottom');
   // $ionicConfigProvider.scrolling.jsScrolling(false);
@@ -62,8 +59,7 @@ var app = angular.module('starter', ['ionic', 'firebase'
 
   .state('login', {
     url: '/login',
-    templateUrl: 'templates/login.html',
-    controller: 'AuthCtrl as auth'
+    templateUrl: 'templates/login.html'
 
   })
   // Each tab has its own nav history stack:
