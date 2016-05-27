@@ -1,0 +1,128 @@
+<ion-view view-title="Dashboard" hide-nav-bar="true">
+      <ion-header-bar align-title="center" class="bar-stable">
+
+        <div class="buttons" ng-click="slideTo(0)">
+          <button class="button button-clear icon ion-person animated {{slideIndex == 0 ? 'color-red' : 'color-gray'}}"></button>
+        </div>
+        <h1 class="title {{slideIndex ==1 ? 'color-red' : 'color-gray'}}" ng-click="slideTo(1)">
+          <img ng-src="img/mizar-alcor.png" class="header-logo">
+        </h1>
+        <div class="buttons" ng-click="slideTo(2)">
+            <button class="button button-clear icon ion-chatbubbles animated {{slideIndex == 2 ? 'color-red' : 'color-gray'}}"></button>
+        </div>
+
+      </ion-header-bar>
+  <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" active-slide="slideIndex" ion-slide-tabs>
+    <ion-slide>
+      <ion-content>
+        <div class="profile-container">
+          <img ng-click="showProfile()" ng-src="img/ben.png" class="profile-image" width="100">
+          <img
+            ng-click="showEditProfile()"
+            ng-src="img/edit.png"
+            class="profile-edit"
+            width="50">
+        </div>
+
+          <div class="text-center padding" style="margin-top:22px;">
+            <h3>Ben</h3>
+            <h4>Ionic</h4>
+            <p class="color-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="color-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua...</p>
+          </div>
+
+          <ion-list class="text-center uppercase">
+            <ion-item class="color-red" style="top: 30px;" ng-click="showEditProfile()">
+              Edit Profile
+            </ion-item>
+            <ion-item class="color-red" style="top: 30px;" ng-click="showSettings()">
+              Settings
+            </ion-item>
+            <ion-item class="color-pastel-blue" style="top: 30px;">
+              Get mizar-alcor Plus
+            </ion-item>
+          </ion-list>
+      </ion-content>
+    </ion-slide>
+
+
+    <ion-slide>
+
+<!--           <div class="radar" ng-if="!cards.length">
+            <img ng-src="img/adam.png" width="100" height="100">
+          </div>
+          <div on-touch="onTouch()" on-release="onRelease()" class="layered-paper animated fadeIn" ng-if="cards.length" can-swipe="false" ng-click="showProfile()">
+              <img ng-src="img/ben.png">
+              <h3 class="item">Adam, 26</h3>
+          </div> -->
+
+
+
+
+          <!-- *************************
+            TD Cards
+            - We start off with an ng-if so that the cards are not generated
+              unless $scope.cards is not 'null'
+          ************************* -->
+          <div ng-if="cards.active">
+            <td-cards on-touch="onTouch()" on-release="onRelease()" ng-click="showProfile()">
+              <td-card ng-repeat="card in cards.active" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)">
+                <div class="image">
+                  <div class="no-text">NOPE</div>
+                  <div class="yes-text">LIKE</div>
+                  <!-- *************************
+                    Discard
+                    - The card is removed from the deck and a fly away animation is triggered.
+                    - onClickTransitionOut is found in ionic.tdcards.js
+                    - Animation can be customized by changing defaults
+                  ************************* -->
+                  <!-- <div class="discard" ng-click="onClickTransitionOut(card)">DISCARD</div> -->
+                  <img ng-src="{{ card.image }}">
+                  <h3 class="item">Adam, 26</h3>
+                </div>
+              </td-card>
+              <!-- *************************
+                End Card
+                - 'drag' is set to false. The user cannot drag it.
+                - 'refreshCards()' reloads all cards that have NOT been discarded.
+              ************************* -->
+              <td-card id="end-card" drag="false">
+                <i class="icon ion-ios-refresh color-gray disable-user-behavior" ng-click="refreshCards()"></i>
+              </td-card>
+            </td-cards>
+          </div>
+
+          <div class="mizar-alcor-buttons animated fadeIn" ng-if="cards.active">
+              <div class="mizar-alcor-button" ng-click="like(false)"></div>
+
+              <div class="info" ng-click="info()"></div>
+
+              <div class="mizar-alcor-button" ng-click="like(true)"></div>
+          </div>
+    </ion-slide>
+    <ion-slide>
+      <ion-content>
+        <div class="item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input force-lower-case type="text" class="bold" placeholder="Search 7 Matches" ng-model="search" ng-value="search" ng-change="filterResults(search)">
+          </label>
+          <button class="button button-stable button-clear" ng-click="filterResults(null);search=null">
+            Cancel
+          </button>
+        </div>
+        <div class="item item-divider bg-white uppercase color-red" style="border:none;">Matches</div>
+        <ion-list>
+            <ion-item class="item-light item-text-wrap item-avatar item-borderless item-icon-right" data-ng-repeat="blog in ['ben', 'max', 'mike', 'perry','ben', 'max', 'mike', 'perry'] track by $index" style="overflow:hidden;">
+              <img ng-src="img/{{blog}}.png">
+              <h2 class="capitalize font-120">{{blog}}</h2>
+              <p class="capitalize color-gray">Sent you a message</p>
+              <hr class="item-hr">
+            </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-slide>
+  </ion-slide-box>
+</ion-view>
