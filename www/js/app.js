@@ -64,7 +64,49 @@ var app = angular.module('starter', ['ionic', 'firebase'
     url: '/login',
     templateUrl: 'templates/login.html',
     controller: 'AuthCtrl as auth'
+  })
 
+  .state('profile', {
+    url: '/profile',
+    views: {
+      'profile': {
+        templateUrl: 'templates/profile.html',
+        controller: 'ProfileCtrl as prof',
+        resolve: {
+          auth: function($state, Auth) {
+            return Auth.requireAuth().catch(function() {
+              $state.go('login');
+            });
+          },
+
+          profile: function(Auth) {
+            return Auth.requireAuth().then(function(auth) {
+              return Auth.getProfile(auth.uid).$loaded();
+            });
+          },
+
+          about: function(Auth) {
+            return Auth.requireAuth()
+            .then(function(auth) {
+              return Auth.getAbout(auth.facebook.accessToken);
+            })
+            .then(function(object) {
+              return object.data.bio;
+            });
+          },
+          images: function(Auth) {
+            return Auth.requireAuth()
+            .then(function(auth) {
+              return Auth.getImages(auth.facebook.accessToken);
+            })
+            .then(function(object) {
+              return object.data.data;
+            });            
+          },
+
+        }       
+      }
+    }
   })
   // Each tab has its own nav history stack:
 
@@ -87,6 +129,7 @@ var app = angular.module('starter', ['ionic', 'firebase'
         }
       }
     })
+
     .state('tab.chat-detail', {
       url: '/chats/:chatId',
       views: {
